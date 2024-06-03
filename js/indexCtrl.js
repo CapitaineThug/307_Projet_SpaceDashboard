@@ -11,7 +11,6 @@ $(document).ready(function () {
   window.httpService = new HttpService();
   window.indexCtrl = new IndexCtrl();
   httpService.httpErrorsSetup(indexCtrl.addLogMessage);
-
 });
 
 class IndexCtrl {
@@ -53,7 +52,10 @@ class IndexCtrl {
   }
 
   // Fonction pour rafraichir l'avatar
-  updateAvatar(){
-    let icon = httpService.getRandomAvatar();
+  updateAvatar() {
+    httpService.getRandomAvatar(function (avatar) {
+      $("#avatar").html(avatar);
+      httpService.mainCtrl.addLogMessage("Avatar rafraîchi avec succès", true);
+    });
   }
 }

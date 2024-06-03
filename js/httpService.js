@@ -9,6 +9,10 @@ class HttpService {
   // Constructeur
   constructor() {
 
+    // Créer les attributs de classe
+    this.mainCtrl = null;
+    this.statusCtrl = null;
+
   }
 
   // Fonction pour centraliser les erreurs HTTP
@@ -38,36 +42,25 @@ class HttpService {
   }
 
   // Fonction pour récupérer un avatar aléatoire
-  getRandomAvatar() {
+  getRandomAvatar(fnSuccess) {
     // Générer la seed aléatoire
     let caracters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
     let seed = "";
     for (let i = 0; i < 6; i++) {
       seed += caracters.charAt(Math.floor(Math.random() * caracters.length));
     }
-    console.log(seed);
 
     // Variables
     let url = "https://api.dicebear.com/8.x/pixel-art/svg"
-    let param = "?seed=" + seed;
-    let icon;
+    let param = "seed=" + seed;
 
     // envoi de la requête
     $.ajax(url, {
       type: "GET",
+      dataType: "text",
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       data: param,
-      success: ((data) => {
-        window.data = data;
-        console.log(data.text);
-        console.log(data.toString());
-        console.log(data.innerHtml);
-      })
+      success: fnSuccess
     });
-
-    // Retour
-    return icon;
-
   }
-
 }
