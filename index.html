@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="css/main.css">
     <!--JS-->
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/vueWrk.js"></script>
-    <script type="text/javascript" src="js/httpWrk.js"></script>
+    <script type="text/javascript" src="js/vueService.js"></script>
+    <script type="text/javascript" src="js/httpService.js"></script>
     <script type="text/javascript" src="js/mainCtrl.js"></script>
     <script type="text/javascript" src="js/statusCtrl.js"></script>
     <script type="text/javascript" src="js/indexCtrl.js"></script>
@@ -26,9 +26,34 @@
 <!--Contenu du site-->
 
 <body>
-    <div id="container">
+    <div id="container" class="container">
+        <!--En-tête-->
+        <header>
+            <div class="header_container_left"> <a href="/">
+                    <img class="site_icon" src="img/icon.png">
+                </a>
+                <h1>Space Dashboard</h1>
+            </div>
+            <div class="header_container_right">
+                <a href="/">
+                    <p class="nav_link">status 📹</p>
+                </a>
+                <div class="avatar_frame">
+                    <img class="avatar_icon" src="img/avatar.svg">
+                </div>
+            </div>
+        </header>
         <!--Conteneur Principal pour charger les vues-->
-        <div id="view"></div>
+        <div id="view" class="view"></div>
+        <!--Pied de page-->
+        <footer>
+            <div class="header_container_left">
+                <p>Construit avec ❤</p>
+            </div>
+            <div class="header_container_right">
+                <p>© 2024 Nicolas Schmid</p>
+            </div>
+        </footer>
     </div>
 </body>
 
