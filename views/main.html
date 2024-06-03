@@ -1,9 +1,78 @@
 <!DOCTYPE html>
-<html>
 <!-- 
     But :    Index du Dashboard sur l'espace avec le infos principales
     Auteur : Nicolas Schmid
     Date :   03.06.2024 / V1.0 
 -->
 
-</html>
+<!--Bannière-->
+<div class="banner_page"></div>
+<div class="info_flex">
+    <!--Jour / Nuit-->
+    <div class="info" style="width:60%;">
+        <div class="info_title">
+            <h2>Jour / Nuit</h2>
+        </div>
+        <div class="info_content_array">
+            <div class="info_content" style="width:70%">
+                <img class="planet_icon" src="img/sun.png">
+                <div>
+                    <p class="planetTimeInfo">↑ 6h34</p>
+                    <p class="planetTimeInfo">↓ 19h21</p>
+                </div>
+                <img class="planet_icon" src="img/moon.png">
+                <div>
+                    <p class="planetTimeInfo">↑ 16h20</p>
+                    <p class="planetTimeInfo">↓ 5h45</p>
+                </div>
+            </div>
+            <div class="info_content" style="width:30%">
+                <p class="centralInfo">UTC+1</p>
+            </div>
+        </div>
+    </div>
+    <!--Horloge en temps réel-->
+    <div class="info" style="width:40%;">
+        <div class="info_title">
+            <h2>Horloge</h2>
+        </div>
+        <div class="info_content_array">
+            <div class="info_content" style="width:100%">
+                <p class="centralInfo centralTime">12h 24m 54m 245ms</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="info_flex">
+    <!--ISS sur carte-->
+    <div class="info" style="width:75%;">
+        <div class="info_title">
+            <h2>International Space Station</h2>
+        </div>
+        <div class="info_content_array">
+            <div class="info_content" style="width:100%">
+                <p>ici la map</p>
+            </div>
+        </div>
+    </div>
+    <!--Journaux d'application web-->
+    <div class="info" style="width:25%;">
+        <div class="info_title">
+            <h2>Journaux</h2>
+        </div>
+        <div class="info_content_array">
+            <div class="info_content" style="width:100%">
+                <div class="journalArray">
+                    <div class="journal">
+                        <div class="logStatus logSuccess">✓</div>
+                        <p>Succès de l'action</p>
+                    </div>
+                    <div class="journal">
+                        <div class="logStatus logError">X</div>
+                        <p>Erreur lors de l'action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
