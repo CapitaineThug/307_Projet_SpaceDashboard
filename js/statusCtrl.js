@@ -3,3 +3,12 @@
   Auteur : Nicolas Schmid
   Date :   03.06.2024 / V1.0 
 */
+
+class StatusCtrl {
+
+  // Constructeur
+  constructor() {
+
+  }
+
+}

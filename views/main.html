@@ -17,17 +17,17 @@
             <div class="info_content" style="width:70%">
                 <img class="planet_icon" src="img/sun.png">
                 <div>
-                    <p class="planetTimeInfo">↑ 6h34</p>
-                    <p class="planetTimeInfo">↓ 19h21</p>
+                    <p class="planetTimeInfo" id="sunUp">↑ 6h34</p>
+                    <p class="planetTimeInfo" id="sunDown">↓ 19h21</p>
                 </div>
                 <img class="planet_icon" src="img/moon.png">
                 <div>
-                    <p class="planetTimeInfo">↑ 16h20</p>
-                    <p class="planetTimeInfo">↓ 5h45</p>
+                    <p class="planetTimeInfo" id="moonUp">↑ 16h20</p>
+                    <p class="planetTimeInfo" id="moonDown">↓ 5h45</p>
                 </div>
             </div>
             <div class="info_content" style="width:30%">
-                <p class="centralInfo">UTC+1</p>
+                <p class="centralInfo" id="timeZone">UTC+1</p>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="info_content_array">
             <div class="info_content" style="width:100%">
-                <p class="centralInfo centralTime">12h 24m 54m 245ms</p>
+                <p class="centralInfo centralTime" id="preciseClock">12h 24m 54m 245ms</p>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
             <h2>International Space Station</h2>
         </div>
         <div class="info_content_array">
-            <div class="info_content" style="width:100%">
+            <div class="info_content" style="width:100%" id="map">
                 <p>ici la map</p>
             </div>
         </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="info_content_array">
             <div class="info_content" style="width:100%">
-                <div class="journalArray">
+                <div class="journalArray" id="logArray">
                     <div class="journal">
                         <div class="logStatus logSuccess">✓</div>
                         <p>Succès de l'action</p>
