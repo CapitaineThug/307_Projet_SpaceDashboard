@@ -19,11 +19,13 @@ body {
 }
 
 header {
-  background-color: #07122975;
+  background-color: #0a174283;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 
@@ -67,9 +69,67 @@ footer {
   overflow: hidden
 }
 
+.banner_page {
+  background-image: url(../img/background.jpg);
+  height: 220px;
+  border-radius: 15px;
+  background-position: center;
+  background-size: cover;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.info_flex {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  gap: 5px;
+}
+
+.info {}
+
+.info_title {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 5px;
+  background-color: rgb(0, 0, 0);
+
+}
+
+.info_content_array {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.info_content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background-color: #1A1A1A;
+  padding: 5px;
+  padding-left:15px;
+  padding-right:15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  gap: 15px;
+}
+
 .container {}
 
-.view {}
+.view {
+  width: 100%;
+}
 
 /*===================================================
 || Paragraphe
@@ -81,9 +141,37 @@ footer {
   font-size: 20pt;
 }
 
+.planetTimeInfo {
+  font-size: 18px;
+  padding: 5px;
+  background-color: #242424;
+  border-radius: 15px;
+}
+
+.centralInfo{
+  font-size: 20pt;
+  text-align: center;
+  margin-left:auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.centralTime{
+  color:rgb(145, 105, 255);
+  font-style: italic;
+  border-radius: 15px;
+}
+
 /*===================================================
 || Titre
 ===================================================*/
+
+h2 {
+  text-align: left;
+  margin-left: 5px;
+
+}
 
 /*===================================================
 || Image
@@ -99,4 +187,12 @@ footer {
   border: transparent;
   width: 64px;
   height: 64px;
+}
+
+.planet_icon {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
 }
