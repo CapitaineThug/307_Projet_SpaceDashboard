@@ -8,11 +8,6 @@ class HttpService {
 
   // Constructeur
   constructor() {
-
-    // Créer les attributs de classe
-    this.mainCtrl = null;
-    this.statusCtrl = null;
-
   }
 
   // Fonction pour centraliser les erreurs HTTP
@@ -36,7 +31,7 @@ class HttpService {
         } else {
           msg = "Erreur inconnue : \n" + xhr.responseText;
         }
-        httpService.mainCtrl.addLogMessage(msg, success);
+        indexCtrl.addLogMessage(msg, success);
       },
     });
   }
@@ -68,7 +63,7 @@ class HttpService {
   getSunData(fnSuccess) {
     // Récupérer la position actuelle
     let geoposition = navigator.geolocation.getCurrentPosition(function (pos) {
-      httpService.mainCtrl.addLogMessage("Position récupérée avec succès", true);
+      indexCtrl.addLogMessage("Position récupérée avec succès", true);
       let crd = pos.coords; // Coordonnées
       let lat = crd.latitude; // Latitude
       let lng = crd.longitude // Longitude
@@ -82,13 +77,13 @@ class HttpService {
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         data: param,
         success: function (data) {
-          httpService.mainCtrl.addLogMessage("API d'informations de journée contacté avec succès !", true);
+          indexCtrl.addLogMessage("API d'informations de journée contacté avec succès !", true);
           fnSuccess(data);
         }
       });
 
     }, function () {
-      httpService.mainCtrl.addLogMessage("Erreur lors de l'obtention de la géoposition", false);
+      indexCtrl.addLogMessage("Erreur lors de l'obtention de la géoposition", false);
     });
   }
 
@@ -117,7 +112,7 @@ class HttpService {
       dataType: "json",
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function (data) {
-        httpService.mainCtrl.addLogMessage("API de position de l'IIS contacté avec succès !", true);
+        indexCtrl.addLogMessage("API de position de l'IIS contacté avec succès !", true);
         fnSuccess(data);
       }
     });

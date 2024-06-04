@@ -15,7 +15,7 @@ class MainCtrl {
     this.addEventListener();
 
     // Log de bienvenue
-    this.addLogMessage("Page chargée avec succès !", true);
+    indexCtrl.addLogMessage("Page chargée avec succès !", true);
 
     // Mettre à jour les infos du jour
     this.updateSunTZ();
@@ -105,7 +105,7 @@ class MainCtrl {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    this.addLogMessage("Carte chargée !", true);
+    indexCtrl.addLogMessage("Carte chargée !", true);
 
     return map;
   }
@@ -162,6 +162,5 @@ class MainCtrl {
     let second = now.getSeconds();
     let millisecond = now.getMilliseconds();
     $("#preciseClock").text("[" + day + "." + month + "." + year + "] [" + hour + "h " + minute + "m " + second + "s " + millisecond + "ms]");
-    console.log("time updated");
   }
 }

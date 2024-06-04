@@ -24,6 +24,9 @@ class IndexCtrl {
       status: null
     };
 
+    // Compteur de logs
+    this.logsCount = 0;
+
     // Instancier le gestionnaire multipage
     this.vueService = new VueService();
 
@@ -68,7 +71,7 @@ class IndexCtrl {
   updateAvatar() {
     httpService.getRandomAvatar(function (avatar) {
       $("#avatar").html(avatar);
-      httpService.mainCtrl.addLogMessage("Avatar rafraîchi avec succès", true);
+      indexCtrl.addLogMessage("Avatar rafraîchi avec succès", true);
     });
   }
 
@@ -81,6 +84,13 @@ class IndexCtrl {
     if (this.controllers.status) {
       this.controllers.status.cleanup();
       this.controllers.status = null;
+    }
+  }
+  // Ajoute si possible un log dans la liste
+  addLogMessage(msg, success) {
+    if (this.controllers.main) {
+      this.logsCount += 1;
+      this.controllers.main.addLogMessage("[#" + this.logsCount + "] " + msg, success);
     }
   }
 }
