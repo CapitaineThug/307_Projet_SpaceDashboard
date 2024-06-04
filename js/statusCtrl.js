@@ -17,9 +17,20 @@ class StatusCtrl {
         { id: "issgeoposition", name: "ISS Geoposition", url: "http://api.open-notify.org/iss-now.json", icon: "img/web.png" }
       ]
     };
-
+    this.updateStatusInterval = [];
     this.setupStatusWebsite();
 
+  }
+
+  // Méthode de nettoyage avant suppression
+  cleanup() {
+    // Supprimer l'intervale de status des sites
+    if (this.updateStatusInterval.length !== 0) {
+      for (let i = 0; i < this.updateStatusInterval.length; i++) {
+        clearInterval(this.updateStatusInterval[i]);
+      }
+      this.updateStatusInterval = [];
+    }
   }
 
   // Fonction pour créer chaque site de status
@@ -39,12 +50,11 @@ class StatusCtrl {
       // Créer le message d'erreur
       let webElement = websiteStatus.append(webicon, webname, webstatus);
 
-      // Fonction pour rafraîchir automatiquement le status chaque 5 secondes
-      setInterval(() => {
-        httpService.getWebsiteStatus(url, function (data) {
-          console.log(data);
-        });
-      }, 1000);
+      this.updateStatusInterval.push(setInterval(() => {
+        console.log("Test de vérification de " + name + " " + url);
+        //httpService.getWebsiteStatus(url, function (data) {
+        //});
+      }, 1000));
 
       // Ajouter le site
       $("#websiteList").append(webElement);

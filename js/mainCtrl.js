@@ -26,7 +26,17 @@ class MainCtrl {
     this.updateISSLocation();
 
     // Interval mettant à jour l'heure actuelle
-    setInterval(this.updateClock, 50);
+    this.updateClockInterval = setInterval(this.updateClock, 50);
+
+  }
+
+  // Méthode de nettoyage avant suppression
+  cleanup() {
+    // Supprimer l'intervale d'horloge
+    if (this.updateClockInterval) {
+      clearInterval(this.updateClockInterval);
+      this.updateClockInterval = null;
+    }
   }
 
   // Fonction pour rajouter les évènements d'écoute
@@ -152,5 +162,6 @@ class MainCtrl {
     let second = now.getSeconds();
     let millisecond = now.getMilliseconds();
     $("#preciseClock").text("[" + day + "." + month + "." + year + "] [" + hour + "h " + minute + "m " + second + "s " + millisecond + "ms]");
+    console.log("time updated");
   }
 }

@@ -17,6 +17,13 @@ class IndexCtrl {
 
   // Constructeur
   constructor() {
+
+    // Stocker les autres contrôleurs
+    this.controllers = {
+      main: null,
+      status: null
+    };
+
     // Instancier le gestionnaire multipage
     this.vueService = new VueService();
 
@@ -33,11 +40,17 @@ class IndexCtrl {
 
   // Fonction pour charger la page principale
   loadMainView() {
-    this.vueService.chargerVue("main", () => new MainCtrl());
+    this.vueService.chargerVue("main", () => {
+      this.cleanupCtrl();
+      this.controllers.main = new MainCtrl();
+    });
   }
   // Fonction pour charger la page de status
   loadStatusView() {
-    this.vueService.chargerVue("status", () => new StatusCtrl());
+    this.vueService.chargerVue("status", () => {
+      this.cleanupCtrl();
+      this.controllers.status = new StatusCtrl();
+    });
   }
 
   // Fonction pour ajouter les écouteurs dynamiques
@@ -57,5 +70,17 @@ class IndexCtrl {
       $("#avatar").html(avatar);
       httpService.mainCtrl.addLogMessage("Avatar rafraîchi avec succès", true);
     });
+  }
+
+  // Fonction pour nettoyer les contrôleurs lors du changement de page
+  cleanupCtrl() {
+    if (this.controllers.main) {
+      this.controllers.main.cleanup();
+      this.controllers.main = null;
+    }
+    if (this.controllers.status) {
+      this.controllers.status.cleanup();
+      this.controllers.status = null;
+    }
   }
 }
