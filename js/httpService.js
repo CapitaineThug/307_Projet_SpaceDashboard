@@ -122,4 +122,14 @@ class HttpService {
       }
     });
   }
+
+  // Fonction pour récupérer l'état d'un lien web
+  getWebsiteStatus(url, fnSuccess) {
+    let success = false;
+    $.ajax(url, {
+      type: "GET",
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: fnSuccess
+    });
+  }
 }
