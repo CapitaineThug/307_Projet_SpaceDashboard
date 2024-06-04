@@ -20,7 +20,7 @@ class HttpService {
     $.ajaxSetup({
       error: function (xhr, exception) {
         let msg;
-        let isError = true;
+        let success = false;
         if (xhr.status === 0) {
           msg = "Pas d'accès à la ressource serveur demandée !";
         } else if (xhr.status === 404) {
@@ -36,7 +36,7 @@ class HttpService {
         } else {
           msg = "Erreur inconnue : \n" + xhr.responseText;
         }
-        httpErrorCallbackFn(msg, isError);
+        httpService.mainCtrl.addLogMessage(msg, success);
       },
     });
   }
@@ -62,5 +62,52 @@ class HttpService {
       data: param,
       success: fnSuccess
     });
+  }
+  // Fonction pour récupérer la géoposition du client
+  // Retourne un objet JSON avec toutes les données voulues
+  getSunMoodData(fnSuccess) {
+
+    // Récupérer la position actuelle
+    let geoposition = navigator.geolocation.getCurrentPosition(function (pos) {
+      httpService.mainCtrl.addLogMessage("Position récupérée avec succès", true);
+      let crd = pos.coords; // Coordonnées
+      let lat = crd.latitude; // Latitude
+      let lng = crd.longitude // Longitude
+
+      // Requête vers l'API
+      let url = "https://api.sunrisesunset.io/json";
+      let param = "lat=" + lat + "&lng=" + lng;
+      $.ajax(url, {
+        type: "GET",
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: param,
+        success: function (data) {
+          httpService.mainCtrl.addLogMessage("API d'informations de journée contacté avec succès !", true);
+          fnSuccess(data);
+        }
+      });
+
+    }, function () {
+      httpService.mainCtrl.addLogMessage("Erreur lors de l'obtention de la géoposition", false);
+    });
+
+
+  }
+
+  //Convertit une date du format "9:21:41 PM" en "21h 21m 41s"
+  formatDate(date) {
+    let dateFormated;
+    let dateData = date.split(' ')[0];
+    let dateIndicator = date.split(' ')[1];
+    let hour = dateData.split(':')[0];
+    let minute = dateData.split(':')[1];
+    let second = dateData.split(':')[2];
+
+    if (dateIndicator === "PM") {
+      hour = parseInt(hour) + 12;
+    }
+
+    return hour + "h " + minute + "m " + second + "s";
   }
 }
