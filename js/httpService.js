@@ -65,8 +65,7 @@ class HttpService {
   }
   // Fonction pour récupérer la géoposition du client
   // Retourne un objet JSON avec toutes les données voulues
-  getSunMoodData(fnSuccess) {
-
+  getSunData(fnSuccess) {
     // Récupérer la position actuelle
     let geoposition = navigator.geolocation.getCurrentPosition(function (pos) {
       httpService.mainCtrl.addLogMessage("Position récupérée avec succès", true);
@@ -91,8 +90,6 @@ class HttpService {
     }, function () {
       httpService.mainCtrl.addLogMessage("Erreur lors de l'obtention de la géoposition", false);
     });
-
-
   }
 
   //Convertit une date du format "9:21:41 PM" en "21h 21m 41s"
@@ -109,5 +106,20 @@ class HttpService {
     }
 
     return hour + "h " + minute + "m " + second + "s";
+  }
+
+  // Fonction pour récupérer la position de l'ISS
+  updateISSLocation(fnSuccess) {
+    // Requête vers l'API
+    let url = "http://api.open-notify.org/iss-now.json";
+    $.ajax(url, {
+      type: "GET",
+      dataType: "json",
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: function (data) {
+        httpService.mainCtrl.addLogMessage("API de position de l'IIS contacté avec succès !", true);
+        fnSuccess(data);
+      }
+    });
   }
 }

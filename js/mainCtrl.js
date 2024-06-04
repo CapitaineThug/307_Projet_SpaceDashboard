@@ -11,17 +11,28 @@ class MainCtrl {
     // Ajouter la référence au httpService
     window.httpService.mainCtrl = this;
 
+    // Ajouter le évènements de boutons
+    this.addEventListener();
+
     // Log de bienvenue
     this.addLogMessage("Page chargée avec succès !", true);
 
-    // Mettre à jour les infos
-    this.updateSunMoonTZ();
+    // Mettre à jour les infos du jour
+    this.updateSunTZ();
 
     // Initialiser la carte et récupérer l'ISS
-    this.initMap();
+    window.issMarker = null;
+    window.mapISS = this.initMap();
     this.updateISSLocation();
+
+    // Interval mettant à jour l'heure actuelle
+    setInterval(this.updateClock, 50);
   }
 
+  // Fonction pour rajouter les évènements d'écoute
+  addEventListener() {
+    $("#btn_updateISS").click(() => this.updateISSLocation());
+  }
   // Fonction pour afficher un message dans les logs
   addLogMessage(msg, success) {
     // Créer les éléments du message
@@ -50,10 +61,10 @@ class MainCtrl {
   }
 
   // Fonction pour mettre à jour les info du soleil / lune et timezone
-  updateSunMoonTZ() {
+  updateSunTZ() {
     // Variables
     let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    httpService.getSunMoodData(function (data) {
+    httpService.getSunData(function (data) {
       // Rassembler les valeurs importantes
       let timezone = data.results.timezone;
       let sunrise = httpService.formatDate(data.results.sunrise);
@@ -68,7 +79,7 @@ class MainCtrl {
       $("#sunDown").text("↓ " + sunset);
       $("#firstLight").text("↑ " + firstlight);
       $("#lastLight").text("↓ " + lastlight);
-      $("#dayLength").text("↓ " + daylength);
+      $("#dayLength").text(daylength);
     });
 
   }
@@ -85,12 +96,61 @@ class MainCtrl {
     }).addTo(map);
 
     this.addLogMessage("Carte chargée !", true);
+
+    return map;
   }
 
   // Fonction pour rafraîchir la location de l'ISS
   updateISSLocation() {
     httpService.updateISSLocation(function (data) {
-      console.log(data);
+      // Récupérer les valeurs importantes
+      let lat = data.iss_position.latitude;
+      let lng = data.iss_position.longitude;
+
+      // Icône du marqueur ISS
+      let issIcon = L.icon({
+        iconUrl: "img/iss.png",
+        iconSize: [18, 30],
+        iconAnchor: [9, 30],
+        popupAnchor: [0, -20],
+      });
+
+
+      // Supprimer le marqueur si existant
+      if (issMarker != null) {
+        window.mapISS.removeLayer(issMarker);
+      }
+
+      // Marqueur ISS
+      issMarker = new L.Marker([lat, lng], {
+        icon: issIcon
+      });
+
+      // Ajouter le marqueur
+      issMarker.addTo(window.mapISS);
+      window.mapISS.setView([lat, lng], 4);
+
+      // Informations du marqueur
+      issMarker.bindPopup("Latitude: " + lat + " Longitude: " + lng, {
+        closeButton: true,
+        autoClose: false,
+        closeOnClick: true
+      }).openPopup();
+
+
     });
+  }
+
+  // Fonction pour mettre à jour le temps
+  updateClock() {
+    let now = new Date();
+    let day = now.getDate();
+    let month = now.getMonth();
+    let year = now.getFullYear();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let second = now.getSeconds();
+    let millisecond = now.getMilliseconds();
+    $("#preciseClock").text("[" + day + "." + month + "." + year + "] [" + hour + "h " + minute + "m " + second + "s " + millisecond + "ms]");
   }
 }
