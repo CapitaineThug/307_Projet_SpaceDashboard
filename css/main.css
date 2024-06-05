@@ -132,6 +132,12 @@ footer {
   width: 100%;
 }
 
+.journal:first-child {
+  border-color: rgb(63, 48, 0);
+  border-width: 1px;
+  border-style: solid;
+}
+
 .journalArray {
   display: flex;
   flex-direction: column;
@@ -194,6 +200,23 @@ footer {
   background-color: #a6192e;
 }
 
+.attributions_array {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+  gap: 15px;
+}
+
+.attributions_array div {
+  background-color: rgb(37, 37, 37);
+  border-radius: 15px;
+  width: auto;
+  padding: 5px;
+}
+
 /*===================================================
 || Paragraphe
 ===================================================*/
@@ -201,7 +224,7 @@ footer {
 .nav_link {
   color: white;
   font-style: normal;
-  font-size: 20pt;
+  font-size: 18pt;
 }
 
 .planetTimeInfo {
@@ -230,6 +253,11 @@ footer {
 .websiteStatus p {
   font-weight: bold;
   color: #0044cc;
+}
+
+.attributions_array div a {
+  color: white;
+  margin: 0px;
 }
 
 /*===================================================
