@@ -89,18 +89,20 @@ class HttpService {
 
   //Convertit une date du format "9:21:41 PM" en "21h 21m 41s"
   formatDate(date) {
-    let dateFormated;
-    let dateData = date.split(' ')[0];
-    let dateIndicator = date.split(' ')[1];
-    let hour = dateData.split(':')[0];
-    let minute = dateData.split(':')[1];
-    let second = dateData.split(':')[2];
+    let result = "Aucune donnée";
+    if (date != null) {
+      let dateData = date.split(' ')[0];
+      let dateIndicator = date.split(' ')[1];
+      let hour = dateData.split(':')[0];
+      let minute = dateData.split(':')[1];
+      let second = dateData.split(':')[2];
 
-    if (dateIndicator === "PM") {
-      hour = parseInt(hour) + 12;
+      if (dateIndicator === "PM") {
+        hour = parseInt(hour) + 12;
+      }
+      result = hour + "h " + minute + "m " + second + "s";
     }
-
-    return hour + "h " + minute + "m " + second + "s";
+    return result;
   }
 
   // Fonction pour récupérer la position de l'ISS
@@ -119,12 +121,10 @@ class HttpService {
   }
 
   // Fonction pour récupérer l'état d'un lien web
-  getWebsiteStatus(url, fnSuccess) {
+  getWebsiteStatus(url, fnSuccess, fnError) {
     let success = false;
-    $.ajax(url, {
-      type: "GET",
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: fnSuccess
-    });
+    fetch(url, { mode: 'no-cors' })
+      .then(fnSuccess)
+      .catch(fnError);
   }
 }

@@ -10,6 +10,7 @@ class MainCtrl {
   constructor() {
     // Ajouter la référence au httpService
     window.httpService.mainCtrl = this;
+    this.maxLog = 6;
 
     // Ajouter le évènements de boutons
     this.addEventListener();
@@ -64,7 +65,7 @@ class MainCtrl {
     $("#logArray").prepend(journal);
 
     //Supprimer le plus ancien dès 5 logs
-    if ($("#logArray").children().length > 5) {
+    if ($("#logArray").children().length > this.maxLog) {
       $("#logArray").children().last().remove();
     }
 
