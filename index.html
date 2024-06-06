@@ -3,7 +3,7 @@
 <!-- 
     But :    Index du site chargeant les sous-pages
     Auteur : Nicolas Schmid
-    Date :   03.06.2024 / V1.0 
+    Date :   06.06.2024 / V1.2
 -->
 
 <!--Meta-données-->
@@ -14,20 +14,16 @@
     <!--Icône-->
     <link rel="icon" type="image/png" href="img/icon.png">
     <!--CSS-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin />
+    <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/main.css">
     <!--JS-->
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/indexCtrl.js"></script>
-    <script type="text/javascript" src="js/vueService.js"></script>
-    <script type="text/javascript" src="js/httpService.js"></script>
-    <script type="text/javascript" src="js/mainCtrl.js"></script>
-    <script type="text/javascript" src="js/statusCtrl.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/vueService.js"></script>
+    <script src="js/httpService.js"></script>
+    <script src="js/mainCtrl.js"></script>
+    <script src="js/statusCtrl.js"></script>
+    <script src="js/indexCtrl.js"></script>
 </head>
 <!--Contenu du site-->
 
@@ -36,16 +32,16 @@
         <!--En-tête-->
         <header>
             <div class="header_container_left" id="nav_main"> <a href="#">
-                    <img class="site_icon" src="img/favicon.png">
+                    <img class="site_icon" src="img/favicon.png" alt="icône du site">
                 </a>
                 <h1>Space Dashboard</h1>
             </div>
             <div class="header_container_right">
                 <a href="#">
-                    <p class="nav_link" id="nav_status">API Status ↗</p>
+                    <p class="nav_link" id="nav_status">API Statuts ↗</p>
                 </a>
                 <div class="avatar_frame" id="avatar">
-                    <img class="avatar_icon" src="img/default_avatar.svg">
+                    <img class="avatar_icon" src="img/default_avatar.svg" alt="default avatar">
                 </div>
 
             </div>

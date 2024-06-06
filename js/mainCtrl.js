@@ -1,22 +1,23 @@
 /*
   But :    Contrôleur du Dashboard contenant toutes les informations sur l'espace
   Auteur : Nicolas Schmid
-  Date :   04.06.2024 / V1.0 
+  Date :   06.06.2024 / V1.2
 */
 
 class MainCtrl {
 
   // Constructeur
   constructor() {
+
+    // Log de bienvenue
+    indexCtrl.addLogMessage("Page chargée avec succès !", true);
+
     // Ajouter la référence au httpService
     window.httpService.mainCtrl = this;
     this.maxLog = 6;
 
     // Ajouter le évènements de boutons
     this.addEventListener();
-
-    // Log de bienvenue
-    indexCtrl.addLogMessage("Page chargée avec succès !", true);
 
     // Mettre à jour les infos du jour
     this.updateSunTZ();
