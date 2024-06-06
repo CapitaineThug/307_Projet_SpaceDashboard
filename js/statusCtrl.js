@@ -14,7 +14,7 @@ class StatusCtrl {
       sites: [
         { id: "sunrisesunset", name: "Sunrise Sunset", url: "https://api.sunrisesunset.io/json", icon: "img/web_status/web_01.png" },
         { id: "dicebearpixelart", name: "Dicebear Pixel Art", url: "https://api.dicebear.com/8.x/pixel-art/svg", icon: "img/web_status/web_02.png" },
-        { id: "issgeoposition", name: "ISS Geoposition", url: "http://api.open-notify.org/iss-now.json", icon: "img/web_status/web_03.png" }
+        { id: "issgeoposition", name: "ISS Geoposition", url: "https://api.wheretheiss.at/v1/satellites/25544", icon: "img/web_status/web_03.png" }
       ]
     };
     this.updateStatusInterval = [];

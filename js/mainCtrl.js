@@ -115,8 +115,8 @@ class MainCtrl {
   updateISSLocation() {
     httpService.updateISSLocation(function (data) {
       // Récupérer les valeurs importantes
-      let lat = data.iss_position.latitude;
-      let lng = data.iss_position.longitude;
+      let lat = data.latitude;
+      let lng = data.longitude;
 
       // Icône du marqueur ISS
       let issIcon = L.icon({

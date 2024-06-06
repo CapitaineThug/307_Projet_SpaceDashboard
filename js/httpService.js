@@ -108,7 +108,8 @@ class HttpService {
   // Fonction pour récupérer la position de l'ISS
   updateISSLocation(fnSuccess) {
     // Requête vers l'API
-    let url = "http://api.open-notify.org/iss-now.json";
+    let satelliteID = 25544;
+    let url = "https://api.wheretheiss.at/v1/satellites/" + satelliteID;
     $.ajax(url, {
       type: "GET",
       dataType: "json",
