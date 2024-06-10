@@ -1,12 +1,15 @@
-/*
-  But :    Contrôleur des status des services Web
-  Auteur : Nicolas Schmid
-  Date :   06.06.2024 / V1.2
-*/
+/**
+ * Contrôleur de la page de statut des services web, vérifiant l'état des services spécifiés.
+ * @autor Nicolas Schmid
+ * @version 1.3
+ * @since 10.06.2024
+ */
 
 class StatusCtrl {
 
-  // Constructeur
+  /**
+   * Constructeur de la classe StatusCtrl.
+   */
   constructor() {
 
     // Sites Web à vérifier l'état
@@ -22,7 +25,9 @@ class StatusCtrl {
 
   }
 
-  // Méthode de nettoyage avant suppression
+  /**
+   * Nettoie les ressources avant la suppression du contrôleur.
+   */
   cleanup() {
     // Supprimer l'intervale de status des sites
     if (this.updateStatusInterval.length !== 0) {
@@ -33,7 +38,9 @@ class StatusCtrl {
     }
   }
 
-  // Fonction pour créer chaque site de status
+  /**
+   * Configure et met en place le suivi des statuts des sites Web spécifiés.
+   */
   setupStatusWebsite() {
     for (let i = 0; i < this.webList.sites.length; i++) {
       // Variables

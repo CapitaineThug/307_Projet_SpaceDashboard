@@ -1,12 +1,15 @@
-/*
-  But :    Contrôleur du Dashboard contenant toutes les informations sur l'espace
-  Auteur : Nicolas Schmid
-  Date :   06.06.2024 / V1.2
-*/
+/**
+ * Contrôleur de la page principale de l'application, gérant les informations sur le soleil, l'ISS et les journaux.
+ * @autor Nicolas Schmid
+ * @version 1.3
+ * @since 10.06.2024
+ */
 
 class MainCtrl {
 
-  // Constructeur
+  /**
+   * Constructeur de la classe MainCtrl.
+   */
   constructor() {
 
     // Log de bienvenue
@@ -32,7 +35,9 @@ class MainCtrl {
 
   }
 
-  // Méthode de nettoyage avant suppression
+  /**
+   * Nettoie les ressources avant la suppression du contrôleur.
+   */
   cleanup() {
     // Supprimer l'intervale d'horloge
     if (this.updateClockInterval) {
@@ -41,11 +46,17 @@ class MainCtrl {
     }
   }
 
-  // Fonction pour rajouter les évènements d'écoute
+  /**
+   * Ajoute des écouteurs dynamiques pour les boutons.
+   */
   addEventListener() {
     $("#btn_updateISS").click(() => this.updateISSLocation());
   }
-  // Fonction pour afficher un message dans les logs
+  /**
+   * Ajoute un message de log.
+   * @param {string} msg - Le message du log.
+   * @param {boolean} success - Indique si le log est un succès ou non.
+   */
   addLogMessage(msg, success) {
     // Créer les éléments du message
     let journalDiv = $('<div>', { class: 'journal' });
@@ -72,7 +83,9 @@ class MainCtrl {
 
   }
 
-  // Fonction pour mettre à jour les info du soleil / lune et timezone
+  /**
+   * Met à jour les informations sur le soleil, le jour et le fuseau horaire.
+   */
   updateSunTZ() {
     // Variables
     let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -96,7 +109,10 @@ class MainCtrl {
 
   }
 
-  // Fonction pour initialiser la carte
+  /**
+   * Initialise la carte pour afficher la position de l'ISS.
+   * @returns {object} - La carte initialisée.
+   */
   initMap() {
     // Position de base de la Map
     let map = L.map("map").setView([28.5220179, -80.6885489], 12);
@@ -112,7 +128,9 @@ class MainCtrl {
     return map;
   }
 
-  // Fonction pour rafraîchir la location de l'ISS
+  /**
+   * Met à jour la position de l'ISS sur la carte.
+   */
   updateISSLocation() {
     httpService.updateISSLocation(function (data) {
       // Récupérer les valeurs importantes
@@ -153,7 +171,9 @@ class MainCtrl {
     });
   }
 
-  // Fonction pour mettre à jour le temps
+  /**
+   * Met à jour l'heure actuelle.
+   */
   updateClock() {
     let now = new Date();
     let day = now.getDate();

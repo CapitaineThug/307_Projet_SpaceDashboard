@@ -1,16 +1,22 @@
-/*
-  But :    Worker exécutant les appels aux services Web
-  Auteur : Nicolas Schmid
-  Date :   06.06.2024 / V1.2
-*/
+/**
+ * Service HTTP pour effectuer des requêtes vers des services web.
+ * @author Nicolas Schmid
+ * @version 1.3
+ * @since 10.06.2024
+ */
 
 class HttpService {
 
-  // Constructeur
+  /**
+   * Constructeur de la classe HttpService.
+   */
   constructor() {
   }
 
-  // Fonction pour centraliser les erreurs HTTP
+  /**
+   * Configure la gestion des erreurs HTTP en définissant une fonction de rappel.
+   * @param {function} httpErrorCallbackFn - La fonction de rappel pour gérer les erreurs HTTP.
+   */
   httpErrorsSetup(httpErrorCallbackFn) {
     $.ajaxSetup({
       error: function (xhr, exception) {
@@ -36,7 +42,10 @@ class HttpService {
     });
   }
 
-  // Fonction pour récupérer un avatar aléatoire
+  /**
+   * Récupère un avatar aléatoire à partir d'une API externe.
+   * @param {function} fnSuccess - La fonction de rappel pour gérer le succès de la requête.
+   */
   getRandomAvatar(fnSuccess) {
     // Générer la seed aléatoire
     let caracters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
@@ -58,8 +67,11 @@ class HttpService {
       success: fnSuccess
     });
   }
-  // Fonction pour récupérer la géoposition du client
-  // Retourne un objet JSON avec toutes les données voulues
+  /**
+   * Récupère la géoposition du client et les données du lever et coucher du soleil à partir d'une API externe.
+   * @param {function} fnSuccess - La fonction de rappel pour gérer le succès de la requête.
+   * @returns {void}
+   */
   getSunData(fnSuccess) {
     // Récupérer la position actuelle
     let geoposition = navigator.geolocation.getCurrentPosition(function (pos) {
@@ -87,7 +99,11 @@ class HttpService {
     });
   }
 
-  //Convertit une date du format "9:21:41 PM" en "21h 21m 41s"
+  /**
+   * Convertit une date du format "9:21:41 PM" en "21h 21m 41s".
+   * @param {string} date - La date à formater.
+   * @returns {string} - La date formatée.
+   */
   formatDate(date) {
     let result = "Aucune donnée";
     if (date != null) {
@@ -105,7 +121,10 @@ class HttpService {
     return result;
   }
 
-  // Fonction pour récupérer la position de l'ISS
+  /**
+   * Met à jour la position de l'ISS en interrogeant une API externe.
+   * @param {function} fnSuccess - La fonction de rappel pour gérer le succès de la requête.
+   */
   updateISSLocation(fnSuccess) {
     // Requête vers l'API
     let satelliteID = 25544;
@@ -121,7 +140,12 @@ class HttpService {
     });
   }
 
-  // Fonction pour récupérer l'état d'un lien web
+  /**
+   * Vérifie l'état d'un lien web en effectuant une requête.
+   * @param {string} url - L'URL du lien web à vérifier.
+   * @param {function} fnSuccess - La fonction de rappel pour gérer le succès de la requête.
+   * @param {function} fnError - La fonction de rappel pour gérer l'erreur de la requête.
+   */
   getWebsiteStatus(url, fnSuccess, fnError) {
     let success = false;
     fetch(url, { mode: 'no-cors' })

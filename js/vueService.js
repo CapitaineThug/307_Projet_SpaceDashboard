@@ -1,16 +1,23 @@
-/*
-  But :    Worker de chargement des différentes vues pour la SPA
-  Auteur : Nicolas Schmid
-  Date :   06.06.2024 / V1.2
-*/
+/**
+ * Service pour charger dynamiquement les vues de l'application.
+ * @autor Nicolas Schmid
+ * @version 1.3
+ * @since 10.06.2024
+ */
 
 class VueService {
 
-  // Constructeur
+  /**
+   * Constructeur de la classe VueService.
+   */
   constructor() {
 
   }
-  // Fonction pour dynamiquement charger une vue
+  /**
+   * Charge dynamiquement une vue spécifiée.
+   * @param {string} vue - Le nom de la vue à charger.
+   * @param {function} [callback] - La fonction de rappel à exécuter après le chargement de la vue.
+   */
   chargerVue(vue, callback) {
 
     // charger la vue demandee

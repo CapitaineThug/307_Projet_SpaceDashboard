@@ -378,12 +378,26 @@ button {
 || Dynamic Media Query
 ===================================================*/
 @media screen and (max-width:600px) {
+  .info_content_array {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   .info_flex {
     flex-direction: column;
   }
 
+  .attributions_array {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   .info_content {
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .websiteStatus {

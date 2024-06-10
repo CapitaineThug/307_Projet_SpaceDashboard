@@ -1,9 +1,9 @@
-/*
-  But :    Contrôleur de l'index étant la page principale du site
-  Auteur : Nicolas Schmid
-  Date :   06.06.2024 / V1.2
-*/
-
+/**
+ * Contrôleur principal de l'application, gérant les vues et les fonctionnalités de base.
+ * @author Nicolas Schmid
+ * @version 1.3
+ * @since 10.06.2024
+ */
 
 // JS quand DOM prêt
 $(document).ready(function () {
@@ -15,7 +15,9 @@ $(document).ready(function () {
 
 class IndexCtrl {
 
-  // Constructeur
+  /**
+   * Constructeur de la classe IndexCtrl.
+   */
   constructor() {
 
     // Stocker les autres contrôleurs
@@ -41,14 +43,18 @@ class IndexCtrl {
 
   }
 
-  // Fonction pour charger la page principale
+  /**
+   * Charge la vue de la page principale.
+   */
   loadMainView() {
     this.vueService.chargerVue("main", () => {
       this.cleanupCtrl();
       this.controllers.main = new MainCtrl();
     });
   }
-  // Fonction pour charger la page de status
+  /**
+   * Charge la vue de la page de statut.
+   */
   loadStatusView() {
     this.vueService.chargerVue("status", () => {
       this.cleanupCtrl();
@@ -56,7 +62,9 @@ class IndexCtrl {
     });
   }
 
-  // Fonction pour ajouter les écouteurs dynamiques
+  /**
+   * Ajoute des écouteurs dynamiques pour la navigation.
+   */
   addEventListener() {
     // Navigation
     $("#nav_main").click(() => {
@@ -67,7 +75,9 @@ class IndexCtrl {
     });
   }
 
-  // Fonction pour rafraichir l'avatar
+  /**
+   * Met à jour l'avatar de l'utilisateur.
+   */
   updateAvatar() {
     httpService.getRandomAvatar(function (avatar) {
       $("#avatar").html(avatar);
@@ -75,7 +85,9 @@ class IndexCtrl {
     });
   }
 
-  // Fonction pour nettoyer les contrôleurs lors du changement de page
+  /**
+   * Nettoie les contrôleurs lors du changement de page.
+   */
   cleanupCtrl() {
     if (this.controllers.main) {
       this.controllers.main.cleanup();
@@ -86,7 +98,11 @@ class IndexCtrl {
       this.controllers.status = null;
     }
   }
-  // Ajoute si possible un log dans la liste
+  /**
+   * Ajoute un message de log si possible.
+   * @param {string} msg - Le message du log.
+   * @param {boolean} success - Indique si le log est un succès ou non.
+   */
   addLogMessage(msg, success) {
     if (this.controllers.main) {
       this.logsCount += 1;
