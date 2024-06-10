@@ -239,6 +239,43 @@ footer {
   border-style: solid;
 }
 
+.width_20 {
+  width: 20%;
+}
+
+.width_30 {
+  width: 30%;
+}
+
+.width_40 {
+  width: 40%;
+}
+
+.width_50 {
+  width: 50%;
+}
+
+.width_60 {
+  width: 60%;
+}
+
+.width_70 {
+  width: 70%;
+}
+
+.width_80 {
+  width: 80%;
+}
+
+.width_90 {
+  width: 90%;
+}
+
+.width_100 {
+  width: 100%;
+}
+
+
 /*===================================================
 || Paragraphe
 ===================================================*/
@@ -334,4 +371,39 @@ button {
 .status_icon {
   width: 50px;
   height: 50px;
+}
+
+
+/*===================================================
+|| Dynamic Media Query
+===================================================*/
+@media screen and (max-width:600px) {
+  .info_flex {
+    flex-direction: column;
+  }
+
+  .info_content {
+    flex-direction: column;
+  }
+
+  .websiteStatus {
+    width: 95%;
+    height: 60px;
+  }
+
+  .statusBox {
+    height: 100%;
+  }
+
+  .width_20,
+  .width_30,
+  .width_40,
+  .width_50,
+  .width_60,
+  .width_70,
+  .width_80,
+  .width_90,
+  .width_100 {
+    width: 100%;
+  }
 }
